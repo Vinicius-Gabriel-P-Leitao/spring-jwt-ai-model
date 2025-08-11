@@ -15,6 +15,7 @@ public enum ErrorCode {
     UNKNOWN_ERROR(1000, "Erro desconhecido"),
     VALIDATION_FAILED(1001, "Falha na validação dos dados"),
     BUSINESS_RULE_VIOLATION(1002, "Violação da regra de negócio"),
+    VAULT_ERROR(1003, "Erro ao capturar dados do vault"),
     BAD_REQUEST(1400, "Requisição inválida"),
     UNAUTHORIZED(1401, "Não autorizado"),
     FORBIDDEN(1403, "Proibido"),

@@ -29,14 +29,14 @@ import java.util.UUID;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "col_user_id")
+    @Column(name = "cd_user_id")
     private UUID userId;
 
-    @Column(name = "ds_user_name", unique = true, nullable = false, length = 30)
+    @Column(name = "cd_user_name", unique = true, nullable = false, length = 30)
     private String userName;
 
     @JsonIgnore
-    @Column(name = "ds_user_password", nullable = false)
+    @Column(name = "cd_user_password", nullable = false)
     private String password;
 
     @Column(name = "ds_user_role")

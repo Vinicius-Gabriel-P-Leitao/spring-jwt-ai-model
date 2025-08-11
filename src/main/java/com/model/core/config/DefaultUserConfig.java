@@ -11,17 +11,20 @@ import com.model.domain.database.model.User;
 import com.model.domain.database.repository.UserRepository;
 import com.model.domain.http.dto.RegisterRequestDto;
 import com.model.domain.service.user.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DefaultUserConfig {
+    @Value("${admin.username}")
+    private String username;
+    @Value("${admin.password}")
+    private String password;
+
     @Bean
     public CommandLineRunner commandLineRunner(UserRepository userRepository, UserService userService) {
-        String username = System.getenv("NAME_ADMIN");
-        String password = System.getenv("PASSWORD_ADMIN");
-
         return args -> {
             if (userRepository.findByUserName(username).isEmpty()) {
                 User admin = new User();

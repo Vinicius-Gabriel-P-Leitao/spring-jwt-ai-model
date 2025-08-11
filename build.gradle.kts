@@ -27,6 +27,7 @@ repositories {
 
 extra["snippetsDir"] = file("build/generated-snippets")
 extra["springAiVersion"] = "1.0.1"
+extra["springCloudVersion"] = "2025.0.0"
 
 dependencies {
     // CORE
@@ -37,6 +38,8 @@ dependencies {
     implementation("org.springframework.ai:spring-ai-tika-document-reader")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    // Vault
+    implementation("org.springframework.cloud:spring-cloud-starter-vault-config")
     // JWT
     val jwtVersion = "0.12.6"
     runtimeOnly("io.jsonwebtoken:jjwt-impl:$jwtVersion")
@@ -60,6 +63,7 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.ai:spring-ai-bom:${property("springAiVersion")}")
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
 }
 

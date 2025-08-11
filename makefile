@@ -3,10 +3,14 @@ ENV_FILE := ./docker/.env
 VAULT_ADDR := http://127.0.0.1:8200
 VAULT_INIT_FILE := ./docker/vault/vault-init.txt
 
-.PHONY: start wait init clean-init
+.PHONY: start-vault start-app wait init clean-init
 
-start:
+start-vault:
 	@docker compose -f ./docker/compose.yaml up -d vault
+
+start-app:
+	@docker compose -f ./docker/compose.yaml up -d postgres
+	@docker compose -f ./docker/compose.yaml up -d app
 
 wait:
 	@echo "Esperando o Vault responder em $(VAULT_ADDR)..."
@@ -15,7 +19,7 @@ wait:
 	done
 	@echo "Vault está no ar!"
 
-init: start wait
+init: start-vault wait
 	@./docker/vault/init.sh $(VAULT_CONTAINER) $(VAULT_ADDR) $(VAULT_INIT_FILE) $(ENV_FILE)
 
 clean-init:

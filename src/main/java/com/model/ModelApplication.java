@@ -1,5 +1,6 @@
 package com.model;
 
+import com.model.core.config.VaultSourceConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,8 @@ public class ModelApplication {
 //        GenerateTextFromTextInput generateTextFromTextInput = new GenerateTextFromTextInput();
 //        generateTextFromTextInput.generateConnection();
 
-        SpringApplication.run(ModelApplication.class, args);
+        SpringApplication app = new SpringApplication(ModelApplication.class);
+        app.addInitializers(new VaultSourceConfig());
+        app.run();
     }
 }
