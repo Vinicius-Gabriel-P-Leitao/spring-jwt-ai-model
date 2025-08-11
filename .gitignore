@@ -38,4 +38,4 @@ out/
 
 ### Code ###
 *.env
-*/vault
+*/vault/vault-init.txt
